@@ -20,6 +20,10 @@ gem "importmap-rails"
 
 gem "devise"
 
+#To ensure that users accessing are who they claim to be
+gem 'devise_token_auth'
+
+
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "turbo-rails"
 
