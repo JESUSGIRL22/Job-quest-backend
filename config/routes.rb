@@ -23,4 +23,10 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :api do
+    namespace :v1 do
+      get '/user_search', to: 'user_search#index'
+    end
+  end
+
 end
