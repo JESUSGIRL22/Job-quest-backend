@@ -15,4 +15,10 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :api do
+    namespace :v1 do
+      get '/job_search', to: 'job_search#index'
+    end
+  end
+
 end
