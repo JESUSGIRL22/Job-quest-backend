@@ -23,6 +23,7 @@ gem "devise"
 #To ensure that users accessing are who they claim to be
 gem 'devise_token_auth'
 
+gem "omniauth"
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "turbo-rails"

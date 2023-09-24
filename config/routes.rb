@@ -1,32 +1,24 @@
 Rails.application.routes.draw do
+  # Defined routes for user profiles
   resources :user_profiles, only: [:show, :edit, :update, :destroy]
+
+  # Defined application routes per the DSL in https://guides.rubyonrails.org/routing.html
+
+  # Defined the root path route ("/")
+  root to: "home#index"
+
+  # Devise routes for user authentication
   devise_for :users
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  #In an attempt to consolidate the API routes
+  # Defined API routes within the 'api/v1' namespace
   namespace :api do
     namespace :v1 do
-      resources :job_listings, except: [:edit, :new]
+      # Defined API routes for job listings and job details
+      resources :job_listings, :job_details, except: [:edit, :new]
+
+      # Defined a single route for job search and user search
+      get '/search', to: 'job_search#index', on: :collection
     end
   end
-
-  namespace :api do
-    namespace :v1 do
-      resources :job_details, except: [:edit, :new]
-    end
-  end
-
-  namespace :api do
-    namespace :v1 do
-      get '/job_search', to: 'job_search#index'
-    end
-  end
-
-  namespace :api do
-    namespace :v1 do
-      get '/user_search', to: 'user_search#index'
-    end
-  end
-
 end
